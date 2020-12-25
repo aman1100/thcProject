@@ -41,15 +41,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            Your cart(0)
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><label id="cart" class="dropdown-item" href="#">Initially your cart is Empty!</label></li>
+                            <li><label onClick="clearCart()" class="dropdown-item" href="#">Clear Cart</label></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Checkout here</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -83,5 +83,38 @@
     {% block js %}
     {% endblock js %}
 </body>
+<script>
 
+var sum=0
+function showCart()
+{   
+    sum=0
+    if(localStorage.getItem("cart")!=null){
+        var prodName=""
+        prodCart=localStorage.getItem("cart");
+        prodCart2=JSON.parse(prodCart);
+    for(var product in prodCart2)
+    {
+        
+        console.log(product + " -> " + prodCart2[product]);
+        prodName=prodName+product+"...qty="+prodCart2[product]+"<br>"
+        sum=sum+parseInt(prodCart2[product]);
+    }
+    document.getElementById("navbarDropdown").innerHTML="Your Cart"+"("+sum+")";
+    document.getElementById("cart").innerHTML=prodName;
+    }
+    
+}
+function clearCart()
+{
+    localStorage.clear();
+    document.getElementById("cart").innerHTML="Your Cart Is Empty";
+    document.getElementById("navbarDropdown").innerHTML="Your Cart"+"("+0+")";
+}
+
+</script>
+
+{% block script %}
+
+{% endblock script %}
 </html>

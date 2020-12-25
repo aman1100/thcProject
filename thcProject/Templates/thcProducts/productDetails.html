@@ -2,3 +2,36 @@
 {% block title %}
 {{product.prodTitle}}
 {% endblock title %}
+{% block body %}
+<div class="container mt-4">
+<div class="row no-gutters">
+    <div class="col">
+        <h1>{{product.prodTitle}}</h1>
+        <p><b>Category: </b>{{product.prodCategory}}</p>
+        <p><b>Sub-Category: </b>{{product.prodSubCategory}}</p>
+        <p><b>Brand: </b>{{product.productBrand}}</p>
+        <p><b>About Product: </b>{{product.prodDescription}}</p>
+        <h4>MRKET PRICE:  <small>  rs.{{product.prodMarketPrice}}/-</small> </h4>
+        <h4>Our PRICE: <small>  rs.{{product.prodThcPrice}}/-</small></h4>
+
+        <br><button type="button" class="btn btn-outline-success mb-2">Add to cart</button>
+    </div>
+    <div class="col">
+        <iframe width="500" height="250" src={{product.prodVideoLink}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <img src="/media/{{product.prodImage1}}" height=200 width=200 >
+        <img src=/media/{{product.prodImage2}} height=200 width=200>
+        <img src=/media/{{product.prodImage3}} height=200 width=200>
+        <img src=/media/{{product.prodImage4}} height=200 width=200>
+        <img src=/media/{{product.prodImage5}} height=200 width=200>
+        
+    </div>
+    <div class="row">
+        <div class="col">
+            
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock body %}
