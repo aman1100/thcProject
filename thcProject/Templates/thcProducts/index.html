@@ -23,7 +23,7 @@ Product Page
                     <p class="card-text"><b>Our Price:Rs.</b> Our Price:Rs.{{product.prodThcPrice}}/</p>
 
                     </div>
-                    <button id="{{product.prodId}},{{product.prodTitle}}" onClick="getId(this.id)" type="button" class="btn btn-outline-success mb-2">Add to cart</button>
+                    <button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}}" onClick="getId(this.id)" type="button" class="btn btn-outline-success mb-2">Add to cart</button>
                     <a href="product/{{product.prodId}}"><button type="button" class="btn btn-outline-success mb-2">Product Details</button></a>
                 </div>
             </div>
@@ -40,6 +40,7 @@ var cart={}
 var qty=0
 function updateCart(prodTitle)
 {
+    
     if(!cart[prodTitle])
     {
         cart[prodTitle]=qty+1
@@ -61,7 +62,6 @@ function getId(id)
 {
     var prodId=id;
     var pId=prodId.split(",")
-    
     //console.log(pId[0],pId[1]);
     updateCart(pId[1])
 }

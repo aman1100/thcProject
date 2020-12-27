@@ -1,0 +1,41 @@
+{%extends 'thcProducts/base.html'%}
+{% block title %}
+Your Cart is empty !
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-4">
+    <center class="alert alert-danger" role="alert">
+        Oops! It looks like you did not add anything to cart. <br> please Visit <a href="/" class="alert-link">home
+        </a>. and add something to cart :)
+    </center>
+    <center>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </center>
+
+</div>
+
+{% endblock body %}

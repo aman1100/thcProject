@@ -14,7 +14,7 @@
         <h4>MRKET PRICE:  <small>  rs.{{product.prodMarketPrice}}/-</small> </h4>
         <h4>Our PRICE: <small>  rs.{{product.prodThcPrice}}/-</small></h4>
 
-        <br><button type="button" class="btn btn-outline-success mb-2">Add to cart</button>
+        <br><button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}}" onClick="getId(this.id)"type="button" class="btn btn-outline-success mb-2">Add to cart</button>
     </div>
     <div class="col">
         <iframe width="500" height="250" src={{product.prodVideoLink}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -35,3 +35,39 @@
 
 </div>
 {% endblock body %}
+
+{% block script %}
+
+<script>
+showCart();
+var cart={}
+var qty=0
+function updateCart(prodTitle)
+{
+    
+    if(!cart[prodTitle])
+    {
+        cart[prodTitle]=qty+1
+        localStorage.setItem("cart",JSON.stringify(cart));
+    }
+    else
+    {
+        var newQty=cart[prodTitle]
+        cart[prodTitle]=newQty+1
+        localStorage.setItem("cart",JSON.stringify(cart));
+
+    }
+    console.log('cart:',cart);
+    showCart();
+}
+
+
+function getId(id)
+{
+    var prodId=id;
+    var pId=prodId.split(",")
+    //console.log(pId[0],pId[1]);
+    updateCart(pId[1])
+}
+</script>
+{% endblock script %}

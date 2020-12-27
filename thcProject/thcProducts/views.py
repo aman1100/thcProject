@@ -16,3 +16,9 @@ def prodDetails(request,prodId):
 
 def aboutus(request):
     return render(request,'thcProducts/aboutus.html')
+
+def checkOut(request):
+    return render(request,'thcProducts/checkOut.html')
+
+def emptyCart(request):
+    return render(request,'thcProducts/emptyCart.html')
