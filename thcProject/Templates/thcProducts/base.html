@@ -65,6 +65,14 @@
         </div>
     </nav>
 
+    
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong>Message: </strong>{{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
     {% block body %}
     {% endblock body %}
 
@@ -90,7 +98,6 @@
 var sum=0
 function showCart()
 {   
-    var prodCart2={}
     var prodName=""
     sum=0
     
@@ -100,14 +107,12 @@ function showCart()
     }
     else{
         
-        var prodCart=localStorage.getItem("cart");
-        prodCart2=JSON.parse(prodCart);
-    for(var product in prodCart2)
+        var prodCart=JSON.parse(localStorage.getItem("cart"));
+    for(var product in prodCart)
     {
-        
         //console.log(product + " -> " + prodCart2[product]);
-        prodName=prodName+product+ "<b> Qty=</b>" +prodCart2[product]+"<br>"
-        sum=sum+parseInt(prodCart2[product]);
+        prodName=prodName+product+ "<b> Qty=</b>" +prodCart[product][0]+"<br>"
+        sum=sum+parseInt(prodCart[product][0]);
     }
     document.getElementById("navbarDropdown").innerHTML="Your Cart"+"("+sum+")";
     document.getElementById("cart").innerHTML=prodName;

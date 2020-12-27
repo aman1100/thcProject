@@ -11,10 +11,10 @@
         <p><b>Sub-Category: </b>{{product.prodSubCategory}}</p>
         <p><b>Brand: </b>{{product.productBrand}}</p>
         <p><b>About Product: </b>{{product.prodDescription}}</p>
-        <h4>MRKET PRICE:  <small>  rs.{{product.prodMarketPrice}}/-</small> </h4>
-        <h4>Our PRICE: <small>  rs.{{product.prodThcPrice}}/-</small></h4>
+        <h4>MARKET PRICE:  <small>  &#x20b9; {{product.prodMarketPrice}}/-</small> </h4>
+        <h4>Our PRICE: <small>  &#x20b9; {{product.prodThcPrice}}/-</small></h4>
 
-        <br><button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}}" onClick="getId(this.id)"type="button" class="btn btn-outline-success mb-2">Add to cart</button>
+        <br><button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}},{{product.prodImage1}}" onClick="getId(this.id)"type="button" class="btn btn-outline-success mb-2">Add to cart</button>
     </div>
     <div class="col">
         <iframe width="500" height="250" src={{product.prodVideoLink}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -42,18 +42,18 @@
 showCart();
 var cart={}
 var qty=0
-function updateCart(prodTitle)
+function updateCart(prodTitle,prodPrice,prodImage1)
 {
     
     if(!cart[prodTitle])
     {
-        cart[prodTitle]=qty+1
+        cart[prodTitle]=[qty+1,prodPrice,prodImage1];
         localStorage.setItem("cart",JSON.stringify(cart));
     }
     else
     {
-        var newQty=cart[prodTitle]
-        cart[prodTitle]=newQty+1
+        var newQty=cart[prodTitle][0]
+        cart[prodTitle]=[newQty+1,prodPrice,prodImage1]
         localStorage.setItem("cart",JSON.stringify(cart));
 
     }
@@ -66,8 +66,8 @@ function getId(id)
 {
     var prodId=id;
     var pId=prodId.split(",")
-    //console.log(pId[0],pId[1]);
-    updateCart(pId[1])
+    //console.log(pId);
+    updateCart(pId[1],pId[2],pId[3]);
 }
 </script>
 {% endblock script %}

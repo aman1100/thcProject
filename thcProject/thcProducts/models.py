@@ -19,3 +19,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.prodTitle
+
+class Order(models.Model):
+    orderId=models.AutoField(primary_key=True)
+    products=models.CharField( max_length=1000)
+    bill=models.CharField(max_length=1000000000000000000000000000000)
+    name=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
+    phoneNumber=models.CharField(max_length=50,default='')
+    address1=models.CharField(max_length=100)
+    address2=models.CharField(max_length=100)
+    city=models.CharField(max_length=100)
+    state=models.CharField(max_length=100)
+    zip=models.CharField(max_length=100)
