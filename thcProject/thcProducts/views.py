@@ -36,7 +36,7 @@ def checkOut(request):
         params={'done':True}
         return render(request,'thcProducts/checkOut.html',params)
         
-    return render(request,'thcProducts/checkOut.html')
+    return render(request,'thcProducts/checkOut.html',)
 
 def emptyCart(request):
     return render(request,'thcProducts/emptyCart.html')

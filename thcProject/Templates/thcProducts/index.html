@@ -23,7 +23,7 @@ Product Page
                     <p class="card-text"><b>Our Price: &#x20b9; </b> {{product.prodThcPrice}}/</p>
 
                     </div>
-                    <button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}},{{product.prodImage1}}" onClick="getId(this.id)" type="button" class="btn btn-outline-success mb-2">Add to cart</button>
+                    <button id="{{product.prodId}},{{product.prodTitle}},{{product.prodThcPrice}},{{product.prodImage1}},{{product.productBrand}}" onClick="getId(this.id)" type="button" class="btn btn-outline-success mb-2">Add to cart</button>
                     <a href="product/{{product.prodId}}"><button type="button" class="btn btn-outline-success mb-2">Product Details</button></a>
                 </div>
             </div>
@@ -38,22 +38,22 @@ Product Page
 showCart();
 var cart={}
 var qty=0
-function updateCart(prodTitle,prodPrice,prodImage1)
+function updateCart(prodTitle,prodPrice,prodImage1,prodBrand)
 {
     
     if(!cart[prodTitle])
     {
-        cart[prodTitle]=[qty+1,prodPrice,prodImage1];
+        cart[prodTitle]=[qty+1,prodPrice,prodImage1,prodBrand];
         localStorage.setItem("cart",JSON.stringify(cart));
     }
     else
     {
         var newQty=cart[prodTitle][0]
-        cart[prodTitle]=[newQty+1,prodPrice,prodImage1]
+        cart[prodTitle]=[newQty+1,prodPrice,prodImage1,prodBrand];
         localStorage.setItem("cart",JSON.stringify(cart));
 
     }
-    console.log('cart:',cart);
+    //console.log('cart:',cart);
     showCart();
 }
 
@@ -63,7 +63,7 @@ function getId(id)
     var prodId=id;
     var pId=prodId.split(",")
     //console.log(pId);
-    updateCart(pId[1],pId[2],pId[3]);
+    updateCart(pId[1],pId[2],pId[3],pId[4]);
 }
 </script>
 {% endblock script %}
